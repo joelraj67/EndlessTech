@@ -1,0 +1,22 @@
+# Endless Tech - UK Technology Training & Consulting
+
+> Endless Tech (Endless Technologies) is a UK-based technology company providing IT Training, Software Development, Cloud Services, AI & Data Analytics, and Technology Consulting. Motto: "Learn Today. Build Tomorrow."
+
+## Core Capabilities & Services
+
+- [IT Training & Certifications](/services/it-training): Industry-focused IT training for AWS, Azure, Google Cloud, Python, React, AI & Machine Learning, and Cybersecurity with 95% pass rate.
+- [Software Development](/services/software-development): Custom web, mobile, and enterprise software solutions built with React 18, Next.js 14, Node.js, and Python.
+- [Cloud Services](/services/cloud-services): AWS & Azure migration, infrastructure-as-code (Terraform), Kubernetes orchestration, and 24/7 cloud security.
+- [AI & Data Analytics](/services/ai-data-analytics): Predictive machine learning models, Power BI business intelligence, data engineering pipelines, and custom LLM integration.
+- [Technology Consulting](/services/technology-consulting): Strategic technology advisory, digital transformation planning, cloud adoption roadmaps, and software architecture audits.
+
+## Training Academy
+
+- [Professional Courses](/training): Certification preparation for AWS Solutions Architect, Azure Administrator, Full-Stack Development, and AI Engineering.
+- [UK HQ Location](/about): Based in London, UK. 100% UK GDPR compliant with UK-based senior engineers and trainers.
+
+## Contact Information
+
+- Email: info@endlesstech.io
+- Phone: +44 (0) 20 7946 0920
+- Website: https://endlesstech.io

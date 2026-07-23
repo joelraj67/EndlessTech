@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+*.log
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+
+# Environment files
+.env
+.env*.local
+*.env
+
+# Operating System files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+Desktop.ini
+
+# IDEs & Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Vercel / Build caches
+.vercel
+.turbo/
