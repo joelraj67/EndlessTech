@@ -1,80 +1,36 @@
-# Vinny.io Website Development - Task Log
+# Refactor: Enterprise-Grade Structure
 
-## Agent-Driven Development Process
+Goal: Separate content, types, and presentation. Extract reusable UI primitives. Replace 5 static service folders with 1 dynamic `[slug]` route.
 
-Following reference best practices from ExpenseTracker Codebase:
-- Surgical changes only
-- Investigate before coding
-- Type-check passes before commit
-- No AI slop (no banned words, no filler)
-- File < 200 lines, function < 50 lines
+## Phase 1 — Foundation (additive, safe)
 
----
+- [ ] 1.1 Create `types/index.ts` (shared interfaces)
+- [ ] 1.2 Install `clsx` + `tailwind-merge`, create `lib/utils.ts` (`cn()`)
+- [ ] 1.3 Create `lib/site.ts` (company/contact config)
+- [ ] 1.4 Create `config/navigation.ts` (nav + footer links)
+- [ ] 1.5 Create `content/*.ts` (8 files — extract inline arrays verbatim)
+- [ ] 1.6 Create `components/ui/*.tsx` (7 primitives)
+- [ ] Verify: `npx tsc --noEmit` passes
 
-### Page 1: Home / Hero Section
-Status: ✅ Complete
-Components: Navigation, HeroSection
-Verification: Content uses specific facts, no "delve", "tapestry", "seamless", or filler patterns.
+## Phase 2 — Migrate sections (modifies existing)
 
-### Page 2: Services Section
-Status: ✅ Complete
-Components: ServicesSection
-Verification: 5 service cards with real descriptions, no AI vocabulary.
+- [ ] 2.1 Move `components/sections/*` → `components/marketing/sections/*`
+- [ ] 2.2 Rewrite sections to consume `content/` + `ui/`
+- [ ] 2.3 Create `components/marketing/home/HomeSections.tsx`, update home page
+- [ ] Verify: tsc + dev server renders identically
 
-### Page 4: Training Section
-Status: ✅ Complete
-Components: TrainingSection
-Verification: 5 items, no filler.
+## Phase 3 — Page views + dynamic route (destructive)
 
-### Page 5: Tech Stack
-Status: ✅ Complete
-Components: TechStackSection
+- [ ] 3.1 Create `components/marketing/pages/*View.tsx` (6 files)
+- [ ] 3.2 Create `app/(marketing)/services/[slug]/page.tsx`
+- [ ] 3.3 Delete 5 static service folders
+- [ ] 3.4 Rewrite 5 top-level pages as thin wrappers
+- [ ] Verify: `npm run build`
 
-### Page 6: Consulting Section
-Status: ✅ Complete
-Components: ConsultingSection
+## Phase 4 — Layout chrome + cleanup
 
-### Page 7: Testimonials
-Status: ✅ Complete
-Components: TestimonialsSection
-Verification: Real client names (James Morrison, Priya Patel, David Chen), no generic filler.
-
-### Page 8: CTA & Footer
-Status: ✅ Complete
-Components: CTASection, Footer
-
-### Page 9: Services Page (/services)
-Status: ✅ Complete
-
-### Page 10: Individual Service Pages
-Status: ✅ Complete (IT Training, Software Dev, Cloud, AI, Consulting)
-
-### Page 11: Training Page (/training)
-Status: ✅ Complete
-
-### Page 12: Consulting Page (/consulting)
-Status: ✅ Complete
-
-### Page 13: Contact Page (/contact)
-Status: ✅ Complete
-
-### Page 14: Agentic Search (llms.txt)
-Status: ✅ Complete
-Public file created at /public/llms.txt
-
-### Page 15: Review with Chrome Dev
-Status: ⏳ In Progress
-Next: Verify visual quality, check for AI slop, review performance.
-
----
-### Anti-Slop Verification Checklist
-- [x] No "delve" in any file
-- [x] No "tapestry" in any file
-- [x] No "seamlessly" in any file
-- [x] No "empowering" in any file
-- [x] No generic filler headlines
-- [x] All CTAs are concrete ("Start Learning", not "Unlock Potential")
-- [x] Specific numbers included (95%, 200+, 10+ years)
-- [x] UK context specified
-- [x] No meta-commentary in code
-- [x] File sizes under 200 lines (all files verified)
+- [ ] 4.1 Nav + Footer consume `config/navigation.ts` + `lib/site.ts`
+- [ ] 4.2 Remove redundant `public/styles.css` import + delete stale CSS
+- [ ] 4.3 Uninstall `framer-motion`
+- [ ] 4.4 Update structure docs (NOT AGENTS.md without approval)
+- [ ] Verify: `npm run build` clean

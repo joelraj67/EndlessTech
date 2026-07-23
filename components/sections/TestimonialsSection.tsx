@@ -3,7 +3,7 @@ import { Star, Quote, Building2, UserCheck } from 'lucide-react';
 
 const testimonials = [
   {
-    quote: "Vinny.io transformed our enterprise approach to cloud migration. Their engineers saved us 40% on infrastructure costs while maintaining 100% uptime.",
+    quote: "EndlessTech transformed our enterprise approach to cloud migration. Their engineers saved us 40% on infrastructure costs while maintaining 100% uptime.",
     author: "James Morrison",
     title: "CTO",
     company: "TechScale UK",
