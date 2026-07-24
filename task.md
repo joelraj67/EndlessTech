@@ -117,5 +117,8 @@ Dependency invariant (verified acyclic):
       tracked at HEAD — left unstaged; `git rm --cached` deferred to a
       follow-up commit so the restructure diff stays pure)
 - [x] 6.9 Stage all 89 restructure changes (52 A · 28 D · 9 M · 1 R) via git
-- [ ] 6.10 Flag: AGENTS.md "Project Structure" section now stale (cannot
+- [x] 6.10 Flag: AGENTS.md "Project Structure" section now stale (cannot
       modify without approval) — documents `components/` + `content/` paths
+      → RESOLVED: AGENTS.md synced with the new src/ feature-sliced layout
+      in commit 924d0b0 (user-approved follow-up). Stack section also updated
+      (Framer Motion removed; fonts → Newsreader + Inter + JetBrains Mono).
