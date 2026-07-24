@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { MapPin, Mail, Phone, Shield } from 'lucide-react';
 import { footerServicesNav, footerCompanyNav, footerLegalNav } from '@/shared/config/navigation';
 import { site } from '@/shared/lib/site';
+import { withBasePath } from '@/shared/lib/paths';
 
 /**
  * Footer — warm ink panel.
@@ -24,7 +25,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-3">
               <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-surface p-0.5 shadow-md border border-white/10">
                 <Image
-                  src="/images/endless-tech-logo.jpeg"
+                  src={withBasePath('/images/endless-tech-logo.jpeg')}
                   alt="Endless Tech Logo"
                   width={40}
                   height={40}

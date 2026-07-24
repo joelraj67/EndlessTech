@@ -1,10 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { Calculator, TrendingUp, Award, ArrowRight } from 'lucide-react';
 import { Container } from '@/shared/ui/container';
 import { GlassCard } from '@/shared/ui/glass-card';
 import { pathways } from '@/features/roi-calculator/model/roi-pathways';
+import { withBasePath } from '@/shared/lib/paths';
 
 /**
  * ROICalculator — interactive pathway selector showing impact + success metrics.
@@ -86,13 +88,13 @@ export default function ROICalculator() {
               {selected.prepDetails}
             </p>
 
-            <a
-              href="/contact"
+            <Link
+              href={withBasePath('/contact')}
               className="w-full inline-flex items-center justify-center gap-2 bg-accent text-white py-3.5 rounded-md text-sm font-semibold hover:bg-accent-hover shadow-md shadow-accent/25 transition-all duration-200 ease-out hover:-translate-y-0.5 active:scale-[0.97]"
             >
-              <span>Get Personalized Roadmap & Pricing</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
+              <span>Get Personalized Roadmap &amp; Pricing</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
 
           </div>
         </div>

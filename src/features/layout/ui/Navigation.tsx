@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { mainNav } from '@/shared/config/navigation';
 import { site } from '@/shared/lib/site';
+import { withBasePath } from '@/shared/lib/paths';
 
 /**
  * Navigation — fixed top bar.
@@ -25,7 +26,7 @@ export default function Navigation() {
         <Link href="/" className="flex items-center gap-3 group">
           <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-surface p-0.5 shadow-sm border border-line group-hover:scale-105 transition-transform">
             <Image
-              src="/images/endless-tech-logo.jpeg"
+              src={withBasePath('/images/endless-tech-logo.jpeg')}
               alt="Endless Tech Logo"
               width={40}
               height={40}

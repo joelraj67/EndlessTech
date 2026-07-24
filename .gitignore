@@ -34,3 +34,5 @@ Desktop.ini
 # Vercel / Build caches
 .vercel
 .turbo/
+# Next.js static export (GitHub Pages build artifact)
+out/
