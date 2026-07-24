@@ -12,9 +12,9 @@ Senior Frontend Engineer & Web Architect. Production-ready, performance-first, a
 - **Language:** TypeScript
 - **UI:** React 18, Server Components by default
 - **Styling:** Tailwind CSS 3.4, custom CSS variables
-- **Animation:** CSS keyframes (pulseGlow, floatSlow, shimmer). Framer Motion declared but unused.
+- **Animation:** CSS keyframes (pulseGlow, floatSlow, shimmer).
 - **Icons:** lucide-react
-- **Fonts:** Inter (body), Plus Jakarta Sans (headings), Manrope (subheadings) via `next/font`
+- **Fonts:** Newsreader (display/headings), Inter (body/UI), JetBrains Mono (labels/terminal) via `next/font/google`
 
 ## Build & Test
 
@@ -25,38 +25,49 @@ Senior Frontend Engineer & Web Architect. Production-ready, performance-first, a
 
 ## Project Structure
 
+Layered, feature-sliced architecture under `src/`. One-directional dependency
+flow: `app/` → `features/` → `shared/`. No barrel exports — import directly
+from source (see Forbidden). See `Design.md` for the full component map.
+
 ```
-app/
-  layout.tsx                  # Root layout (fonts, metadata, lang="en-GB")
-  globals.css                 # Tailwind + custom animations/glass effects
-  (marketing)/
-    layout.tsx                # Navigation + Footer wrapper
-    page.tsx                  # Home (assembles all sections)
-    about/page.tsx
-    contact/page.tsx          # Client component (form)
-    training/page.tsx
-    consulting/page.tsx
-    services/
-      page.tsx                # Services overview
-      it-training/page.tsx
-      software-development/page.tsx
-      cloud-services/page.tsx
-      ai-data-analytics/page.tsx
-      technology-consulting/page.tsx
-components/
-  layout/Navigation.tsx       # Client — fixed nav, mobile drawer
-  layout/Footer.tsx           # Server — 5-column footer
-  sections/HeroSection.tsx    # Full-viewport hero
-  sections/ServicesSection.tsx
-  sections/WhyChooseUsSection.tsx
-  sections/TrainingSection.tsx
-  sections/TechStackSection.tsx
-  sections/ConsultingSection.tsx
-  sections/TestimonialsSection.tsx
-  sections/CTASection.tsx
-  features/ROICalculator.tsx  # Client — interactive calculator
-  features/FAQAccordion.tsx   # Client — FAQ + JSON-LD schema
+src/
+  app/                        # Next.js App Router — routes only (thin wrappers)
+    layout.tsx                # Root layout (fonts, metadata, lang="en-GB")
+    globals.css               # Tailwind + warm-editorial token layer + animations
+    (marketing)/
+      layout.tsx              # Navigation + Footer wrapper
+      page.tsx                # Home → renders features/home/ui/HomeSections
+      about/page.tsx
+      contact/page.tsx         # Client component (form)
+      training/page.tsx
+      consulting/page.tsx
+      services/
+        page.tsx               # Services overview
+        [slug]/page.tsx        # Dynamic detail route (SSG via generateStaticParams)
+  shared/                      # Kernel — depended on by everything, depends on nothing
+    ui/                        # Primitives: container, section, glass-card, badge,
+                               #   gradient-button, gradient-text, section-heading,
+                               #   page-hero, terminal-block
+    lib/                       # utils.ts (cn), site.ts (company config + trust metrics)
+    config/                   # navigation.ts (nav + footer links)
+    types/                     # index.ts (shared contracts)
+  features/                    # Vertical slices — each with ui/ + optional model/
+    layout/ui/                 #   Navigation (client), Footer (server)
+    hero/ui/                   #   HeroSection, HeroTerminal (signature CLI motif)
+    services/{ui,model}/       #   ServicesSection, ServicesView, ServiceDetailView + services.ts
+    training/{ui,model}/       #   TrainingSection, TrainingView + courses.ts
+    consulting/{ui,model}/     #   ConsultingSection, ConsultingView + advisory-steps.ts
+    about/{ui,model}/          #   AboutView + about.ts
+    contact/ui/                #   ContactView
+    home/ui/                   #   HomeSections (homepage composition root)
+    roi-calculator/{ui,model}/ #   ROICalculator (client) + roi-pathways.ts
+    faq/{ui,model}/            #   FAQAccordion (client, JSON-LD) + faqs.ts
+    shared-sections/{ui,model}/#   WhyChooseUs, TechStack, Testimonials, CTA + models
 ```
+
+Dependency invariant: `features/home` is the homepage composition root (composes
+other features' sections top-down; nothing depends back into `home`).
+`shared/ui/terminal-block` is shared by the hero + services features.
 
 ## Workflow
 
