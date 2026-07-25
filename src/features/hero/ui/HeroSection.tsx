@@ -3,6 +3,8 @@ import { Sparkles, ArrowRight } from 'lucide-react';
 import { Container } from '@/shared/ui/container';
 import { Badge } from '@/shared/ui/badge';
 import { GradientButton } from '@/shared/ui/gradient-button';
+import { Counter } from '@/shared/ui/counter';
+import { MagneticWrapper } from '@/shared/ui/magnetic-wrapper';
 import { site } from '@/shared/lib/site';
 import { HeroTerminal } from '@/features/hero/ui/HeroTerminal';
 
@@ -52,21 +54,25 @@ export default function HeroSection() {
           </p>
 
           <div className="mb-14 flex flex-wrap justify-center gap-4">
-            <GradientButton href="/services" size="lg">
-              <span>Explore Our Services</span>
-              <ArrowRight className="h-5 w-5" />
-            </GradientButton>
+            <MagneticWrapper strength={0.18} className="inline-block">
+              <GradientButton href="/services" size="lg">
+                <span>Explore Our Services</span>
+                <ArrowRight className="h-5 w-5" />
+              </GradientButton>
+            </MagneticWrapper>
 
-            <GradientButton href="/contact" variant="secondary" size="lg">
-              <span>Book a Consultation</span>
-            </GradientButton>
+            <MagneticWrapper strength={0.12} className="inline-block">
+              <GradientButton href="/contact" variant="secondary" size="lg">
+                <span>Book a Consultation</span>
+              </GradientButton>
+            </MagneticWrapper>
           </div>
 
           {/* The one hero metric, with provenance */}
           <div className="mx-auto flex max-w-[560px] flex-col items-center gap-1 border-t border-line pt-7 font-mono text-xs text-muted sm:flex-row sm:justify-center sm:gap-3">
             <div className="flex items-baseline gap-2">
               <span className="font-display text-2xl font-medium text-accent">
-                {site.heroMetric.value}
+                <Counter value={site.heroMetric.value} />
               </span>
               <span className="text-muted">{site.heroMetric.label}</span>
             </div>

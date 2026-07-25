@@ -5,6 +5,8 @@ import { Container } from '@/shared/ui/container';
 import { Section } from '@/shared/ui/section';
 import { GlassCard } from '@/shared/ui/glass-card';
 import { GradientText } from '@/shared/ui/gradient-text';
+import { Counter } from '@/shared/ui/counter';
+import { Reveal } from '@/shared/ui/reveal';
 import { aboutStats, companyValues } from '@/features/about/model/about';
 
 /**
@@ -32,15 +34,17 @@ export default function AboutView() {
       <Section tone="surface-alt" className="border-b border-line py-16">
         <Container>
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-            {aboutStats.map((stat) => (
-              <GlassCard key={stat.label} className="p-6 text-center">
-                <p className="mb-2 font-display text-4xl font-medium gradient-text sm:text-5xl">
-                  {stat.value}
-                </p>
-                <p className="font-mono text-xs uppercase tracking-wider text-muted">
-                  {stat.label}
-                </p>
-              </GlassCard>
+            {aboutStats.map((stat, idx) => (
+              <Reveal key={stat.label} delay={idx * 120}>
+                <GlassCard className="p-6 text-center">
+                  <p className="mb-2 font-display text-4xl font-medium gradient-text sm:text-5xl">
+                    <Counter value={stat.value} />
+                  </p>
+                  <p className="font-mono text-xs uppercase tracking-wider text-muted">
+                    {stat.label}
+                  </p>
+                </GlassCard>
+              </Reveal>
             ))}
           </div>
         </Container>
