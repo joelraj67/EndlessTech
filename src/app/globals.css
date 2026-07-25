@@ -12,26 +12,46 @@
 @layer base {
   :root {
     /* --- Color (warm editorial) ----------------------------- */
+    /* Hex + RGB-channel pair per token. The -rgb triplet feeds Tailwind's
+       <alpha-value> placeholder so opacity variants (text-paper/80 etc.)
+       generate valid rgb(R G B / A) output. */
     --color-bg: #faf8f4; /* warm paper — page background */
+    --color-bg-rgb: 250 248 244;
     --color-surface: #ffffff; /* card / input surface */
+    --color-surface-rgb: 255 255 255;
     --color-surface-alt: #f3efe7; /* recessed surface, code blocks */
+    --color-surface-alt-rgb: 243 239 231;
     --color-fg: #1b1815; /* warm ink — primary text */
+    --color-fg-rgb: 27 24 21;
     --color-muted: #6b655c; /* secondary text, captions */
+    --color-muted-rgb: 107 101 92;
     --color-border: #e8e2d6; /* hairline borders */
+    --color-border-rgb: 232 226 214;
     --color-border-strong: #d9d1c0; /* emphasized borders, dividers */
+    --color-border-strong-rgb: 217 209 192;
 
     --color-accent: #b0552e; /* terracotta — primary CTA, links, focus */
+    --color-accent-rgb: 176 85 46;
     --color-accent-hover: #974626; /* primary button hover */
+    --color-accent-hover-rgb: 151 70 38;
     --color-accent-active: #7e3a1f; /* primary button active */
+    --color-accent-active-rgb: 126 58 31;
     --color-accent-soft: #f4e6da; /* tinted backgrounds, soft chips */
+    --color-accent-soft-rgb: 244 230 218;
 
     --color-success: #4a7c59;
+    --color-success-rgb: 74 124 89;
     --color-warning: #b0832e;
+    --color-warning-rgb: 176 131 46;
     --color-danger: #b23b3b;
+    --color-danger-rgb: 178 59 59;
     --color-info: #3d6b8c;
+    --color-info-rgb: 61 107 140;
 
     --color-focus: #b0552e;
+    --color-focus-rgb: 176 85 46;
     --color-panel: #2a2420; /* tinted dark surface — footer, terminal */
+    --color-panel-rgb: 42 36 32;
 
     /* --- Motion (slow, eased) ------------------------------- */
     --ease-standard: cubic-bezier(0.22, 1, 0.36, 1); /* ease-out-quint */

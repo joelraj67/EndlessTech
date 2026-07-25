@@ -8,24 +8,27 @@ const config: Config = {
     extend: {
       colors: {
         // Warm editorial palette — every component reads from these tokens.
-        paper: 'var(--color-bg)',
-        ink: 'var(--color-fg)',
-        muted: 'var(--color-muted)',
-        surface: 'var(--color-surface)',
-        'surface-alt': 'var(--color-surface-alt)',
-        line: 'var(--color-border)',
-        'line-strong': 'var(--color-border-strong)',
+        // Tokens use <alpha-value> so Tailwind can generate opacity variants
+        // (text-paper/80, bg-paper/15, etc.) — required for the dark terminal
+        // + footer panels where light-on-dark text needs translucency.
+        paper: 'rgb(var(--color-bg-rgb) / <alpha-value>)',
+        ink: 'rgb(var(--color-fg-rgb) / <alpha-value>)',
+        muted: 'rgb(var(--color-muted-rgb) / <alpha-value>)',
+        surface: 'rgb(var(--color-surface-rgb) / <alpha-value>)',
+        'surface-alt': 'rgb(var(--color-surface-alt-rgb) / <alpha-value>)',
+        line: 'rgb(var(--color-border-rgb) / <alpha-value>)',
+        'line-strong': 'rgb(var(--color-border-strong-rgb) / <alpha-value>)',
         accent: {
-          DEFAULT: 'var(--color-accent)',
-          hover: 'var(--color-accent-hover)',
-          active: 'var(--color-accent-active)',
-          soft: 'var(--color-accent-soft)',
+          DEFAULT: 'rgb(var(--color-accent-rgb) / <alpha-value>)',
+          hover: 'rgb(var(--color-accent-hover-rgb) / <alpha-value>)',
+          active: 'rgb(var(--color-accent-active-rgb) / <alpha-value>)',
+          soft: 'rgb(var(--color-accent-soft-rgb) / <alpha-value>)',
         },
-        success: 'var(--color-success)',
-        warning: 'var(--color-warning)',
-        danger: 'var(--color-danger)',
-        info: 'var(--color-info)',
-        panel: 'var(--color-panel)',
+        success: 'rgb(var(--color-success-rgb) / <alpha-value>)',
+        warning: 'rgb(var(--color-warning-rgb) / <alpha-value>)',
+        danger: 'rgb(var(--color-danger-rgb) / <alpha-value>)',
+        info: 'rgb(var(--color-info-rgb) / <alpha-value>)',
+        panel: 'rgb(var(--color-panel-rgb) / <alpha-value>)',
       },
       borderColor: {
         DEFAULT: 'var(--color-border)',
