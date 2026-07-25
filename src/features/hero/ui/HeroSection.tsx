@@ -24,8 +24,9 @@ import { HeroTerminal } from '@/features/hero/ui/HeroTerminal';
 export default function HeroSection() {
   return (
     <section className="relative flex min-h-[92vh] items-center overflow-hidden bg-paper pb-20 pt-28">
-      {/* Quiet base — single low warm glow only, no scattered ambient blurs */}
+      {/* Layered warm glow mesh — a richer hero atmosphere than a single blur */}
       <div className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[700px] -translate-x-1/2 rounded-full bg-accent/8 blur-[160px]" />
+      <div className="pointer-events-none absolute -left-20 top-1/3 h-[320px] w-[320px] rounded-full bg-accent/5 blur-[120px]" />
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-[0.5]" />
 
       <Container className="relative w-full">

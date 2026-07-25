@@ -11,6 +11,7 @@ import ROICalculator from '@/features/roi-calculator/ui/ROICalculator';
 import FAQAccordion from '@/features/faq/ui/FAQAccordion';
 import { Section } from '@/shared/ui/section';
 import { Container } from '@/shared/ui/container';
+import { Reveal } from '@/shared/ui/reveal';
 
 /**
  * HomeSections — the homepage section composition, in narrative order.
@@ -20,22 +21,24 @@ export function HomeSections() {
   return (
     <main>
       <HeroSection />
-      <ServicesSection />
-      <WhyChooseUsSection />
+      <Reveal><ServicesSection /></Reveal>
+      <Reveal><WhyChooseUsSection /></Reveal>
 
       {/* Interactive calculator — between proof and catalogue */}
-      <Section tone="surface-alt" className="border-t border-line py-24">
-        <Container>
-          <ROICalculator />
-        </Container>
-      </Section>
+      <Reveal>
+        <Section tone="surface-alt" className="border-t border-line py-24">
+          <Container>
+            <ROICalculator />
+          </Container>
+        </Section>
+      </Reveal>
 
-      <TrainingSection />
-      <TechStackSection />
-      <ConsultingSection />
-      <TestimonialsSection />
-      <FAQAccordion />
-      <CTASection />
+      <Reveal><TrainingSection /></Reveal>
+      <Reveal delay={80}><TechStackSection /></Reveal>
+      <Reveal><ConsultingSection /></Reveal>
+      <Reveal><TestimonialsSection /></Reveal>
+      <Reveal><FAQAccordion /></Reveal>
+      <Reveal><CTASection /></Reveal>
     </main>
   );
 }

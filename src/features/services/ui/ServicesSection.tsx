@@ -5,6 +5,7 @@ import { Container } from '@/shared/ui/container';
 import { Section } from '@/shared/ui/section';
 import { SectionHeading } from '@/shared/ui/section-heading';
 import { GlassCard } from '@/shared/ui/glass-card';
+import { Reveal } from '@/shared/ui/reveal';
 import { services } from '@/features/services/model/services';
 
 /**
@@ -25,10 +26,11 @@ export default function ServicesSection() {
         />
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => {
+          {services.map((service, idx) => {
             const Icon = service.icon;
             return (
-              <Link key={service.slug} href={`/services/${service.slug}`} className="group block">
+              <Reveal key={service.slug} delay={idx * 100}>
+              <Link href={`/services/${service.slug}`} className="group block">
                 <GlassCard interactive className="relative flex h-full flex-col justify-between p-8">
                   {/* Accent top border bar */}
                   <div
@@ -70,6 +72,7 @@ export default function ServicesSection() {
                   </div>
                 </GlassCard>
               </Link>
+              </Reveal>
             );
           })}
         </div>
