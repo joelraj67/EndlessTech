@@ -21,7 +21,7 @@ upgrades in an `@supports` block. Tailwind maps them via `tailwind.config.ts`.
 | Muted | `#6B655C` | `text-muted` | Secondary text, captions |
 | Border | `#E8E2D6` | `border-line` | Hairline borders |
 | Border strong | `#D9D1C0` | `border-line-strong` | Emphasized borders, input borders |
-| Accent (terracotta) | `#B0552E` | `text-accent` / `bg-accent` | Single high-signal accent — CTAs, links, focus |
+| Accent (terracotta) | `#B0552E` | `text-accent` / `bg-accent` | **Single high-signal accent** — CTAs, links, focus |
 | Accent hover | `#974626` | `bg-accent-hover` | Primary button hover |
 | Accent active | `#7E3A1F` | `text-accent-active` | Primary button active |
 | Accent soft | `#F4E6DA` | `bg-accent-soft` | Tinted backgrounds, soft chips |
@@ -31,6 +31,22 @@ upgrades in an `@supports` block. Tailwind maps them via `tailwind.config.ts`.
 | Danger | `#B23B3B` | `text-danger` | Errors, destructive |
 | Info | `#3D6B8C` | `text-info` | Informational |
 
+### Extended palette (cool editorial tones)
+
+| Token | Hex | Tailwind class | Usage |
+|---|---|---|---|
+| Thistle | `#DBC2CF` | `bg-thistle` / `text-thistle` | Soft muted accent — tags, badges, subtle highlights |
+| Thistle soft | `#F0E4E8` | `bg-thistle/10` | Tinted backgrounds for thistle elements |
+| Lavender Grey | `#9FA2B2` | `bg-lavender-grey` / `text-lavender-grey` | Muted neutral — secondary text, disabled states, subtle borders |
+| Lavender Grey soft | `#EBEAF0` | `bg-lavender-grey/10` | Tinted backgrounds for lavender grey elements |
+| Cerulean | `#3C7A89` | `bg-cerulean` / `text-cerulean` | Info state, secondary actions, non-primary links |
+| Cerulean hover | `#326976` | `hover:bg-cerulean-hover` | Secondary button hover |
+| Cerulean soft | `#E8F2F4` | `bg-cerulean/10` | Info banners, toast backgrounds |
+| Charcoal Blue | `#2E4756` | `bg-charcoal-blue` / `text-charcoal-blue` | Elevated dark surface — code blocks, panel backgrounds |
+| Charcoal Blue soft | `#DCE4E8` | `bg-charcoal-blue/10` | Tinted backgrounds for charcoal elements |
+| Jet Black | `#16262E` | `bg-jet-black` / `text-jet-black` | Deepest dark — terminal alternative, high-contrast text |
+| Jet Black soft | `#C8D0D4` | `bg-jet-black/10` | Tinted backgrounds for jet black elements |
+
 ### Posture rules
 
 1. Warm paper `#FAF8F4` is the dominant canvas; surfaces alternate pure white and recessed `#F3EFE7`.
@@ -38,6 +54,7 @@ upgrades in an `@supports` block. Tailwind maps them via `tailwind.config.ts`.
 3. A tinted dark panel (`#2A2420`) is reserved for the **footer** and the **terminal** only — never a global dark theme.
 4. Hairline 1px borders, generous whitespace, restrained radius.
 5. Status colours are earthy and reserved for status — never decoration.
+6. **Extended palette** (cool editorial tones) are semantic tokens only — used for status, muted variations, info states, and dark surfaces. They never replace the terracotta accent.
 
 ## CSS variables
 

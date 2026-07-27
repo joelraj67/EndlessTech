@@ -29,6 +29,22 @@ const config: Config = {
         danger: 'rgb(var(--color-danger-rgb) / <alpha-value>)',
         info: 'rgb(var(--color-info-rgb) / <alpha-value>)',
         panel: 'rgb(var(--color-panel-rgb) / <alpha-value>)',
+        /* --- Extended palette (cool editorial) --- */
+        thistle: {
+          DEFAULT: 'rgb(var(--color-thistle-rgb) / <alpha-value>)',
+        },
+        'lavender-grey': {
+          DEFAULT: 'rgb(var(--color-lavender-grey-rgb) / <alpha-value>)',
+        },
+        cerulean: {
+          DEFAULT: 'rgb(var(--color-cerulean-rgb) / <alpha-value>)',
+        },
+        'charcoal-blue': {
+          DEFAULT: 'rgb(var(--color-charcoal-blue-rgb) / <alpha-value>)',
+        },
+        'jet-black': {
+          DEFAULT: 'rgb(var(--color-jet-black-rgb) / <alpha-value>)',
+        },
       },
       borderColor: {
         DEFAULT: 'var(--color-border)',

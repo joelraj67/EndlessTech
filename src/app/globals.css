@@ -53,6 +53,39 @@
     --color-panel: #2a2420; /* tinted dark surface — footer, terminal */
     --color-panel-rgb: 42 36 32;
 
+    /* --- Extended palette (cool editorial) ------------------------ */
+    /* Thistle — soft muted accent for subtle highlights, tags, badges */
+    --color-thistle: #dbc2cf;
+    --color-thistle-rgb: 219 194 207;
+    --color-thistle-soft: #f0e4e8;
+    --color-thistle-soft-rgb: 240 228 232;
+    
+    /* Lavender Grey — muted neutral for secondary text, disabled states, subtle borders */
+    --color-lavender-grey: #9fa2b2;
+    --color-lavender-grey-rgb: 159 162 178;
+    --color-lavender-grey-soft: #ebeaf0;
+    --color-lavender-grey-soft-rgb: 235 234 240;
+    
+    /* Cerulean — info state, secondary actions, links (non-primary) */
+    --color-cerulean: #3c7a89;
+    --color-cerulean-rgb: 60 122 137;
+    --color-cerulean-hover: #326976;
+    --color-cerulean-hover-rgb: 50 105 118;
+    --color-cerulean-soft: #e8f2f4;
+    --color-cerulean-soft-rgb: 232 242 244;
+    
+    /* Charcoal Blue — elevated dark surface, code blocks, panel backgrounds */
+    --color-charcoal-blue: #2e4756;
+    --color-charcoal-blue-rgb: 46 71 86;
+    --color-charcoal-blue-soft: #dce4e8;
+    --color-charcoal-blue-soft-rgb: 220 228 232;
+    
+    /* Jet Black — deepest dark, terminal background alternative, high-contrast text */
+    --color-jet-black: #16262e;
+    --color-jet-black-rgb: 22 38 46;
+    --color-jet-black-soft: #c8d0d4;
+    --color-jet-black-soft-rgb: 200 208 212;
+
     /* --- Motion (slow, eased) ------------------------------- */
     --ease-standard: cubic-bezier(0.22, 1, 0.36, 1); /* ease-out-quint */
     --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
@@ -82,6 +115,12 @@
       --color-danger: oklch(0.525 0.154 34);
       --color-info: oklch(0.512 0.087 246.9);
       --color-focus: oklch(0.555 0.144 58.5);
+      /* --- Extended palette OKLCH (cool editorial) --------------- */
+      --color-thistle: oklch(0.854 0.035 345.2);
+      --color-lavender-grey: oklch(0.638 0.026 264.3);
+      --color-cerulean: oklch(0.523 0.106 205.4);
+      --color-charcoal-blue: oklch(0.338 0.056 221.8);
+      --color-jet-black: oklch(0.158 0.024 224.6);
     }
   }
 
