@@ -11,6 +11,11 @@ interface InfiniteMarqueeProps {
   speed?: 'fast' | 'normal' | 'slow';
 }
 
+/**
+ * InfiniteMarquee — High-Performance 60fps CSS Marquee Primitive.
+ *
+ * Seamlessly auto-scrolls tech stacks or brand logos with fading gradient edge masks.
+ */
 export function InfiniteMarquee({
   children,
   className,

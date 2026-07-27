@@ -10,6 +10,11 @@ interface MagneticButtonProps extends HTMLMotionProps<'button'> {
   asChild?: boolean;
 }
 
+/**
+ * MagneticButton — Physics-based Micro-Interaction CTA Primitive.
+ *
+ * Pulls the button towards the user's cursor when hovered using Framer Motion spring physics.
+ */
 export function MagneticButton({
   children,
   className,

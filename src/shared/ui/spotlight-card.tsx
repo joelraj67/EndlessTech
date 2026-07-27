@@ -8,6 +8,12 @@ interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
   spotlightColor?: string;
 }
 
+/**
+ * SpotlightCard — Interactive Glassmorphic Surface Primitive.
+ *
+ * Casts a glowing radial spotlight underneath the user's cursor on hover.
+ * Follows the Aura Enterprise dark editorial design specification.
+ */
 export function SpotlightCard({
   children,
   className,

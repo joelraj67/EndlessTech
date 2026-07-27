@@ -10,6 +10,11 @@ interface TextRevealProps {
   delay?: number;
 }
 
+/**
+ * TextReveal — Kinetic Staggered Typography Primitive.
+ *
+ * Animates text word-by-word into view using Framer Motion spring physics.
+ */
 export function TextReveal({ children, className, delay = 0 }: TextRevealProps) {
   // Split text into words while preserving spaces
   const words = children.split(' ').map(word => word + '\u00A0');
