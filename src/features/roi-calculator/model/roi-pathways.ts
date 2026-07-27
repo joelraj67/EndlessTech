@@ -1,6 +1,12 @@
 import type { Pathway } from '@/shared/types';
 
-/** ROI calculator pathways — features/ROICalculator. */
+/** ROI calculator pathways — features/ROICalculator. 
+ * Each pathway now uses an extended palette color for visual differentiation:
+ * - AWS: Thistle (#DBC2CF) - soft training accent
+ * - Azure: Cerulean (#3C7A89) - cloud info state
+ * - Full-Stack: Lavender Grey (#9FA2B2) - engineering neutral
+ * - Cloud Migration: Charcoal Blue (#2E4756) - consulting dark surface
+ */
 export const pathways: Pathway[] = [
   {
     id: 'aws',
@@ -11,6 +17,8 @@ export const pathways: Pathway[] = [
     avgSalaryBoost: '+£18,500/yr',
     prepDetails:
       'Includes official AWS exam voucher prep, 100+ lab scenarios, & resume review.',
+    accentColor: '#DBC2CF', // Thistle
+    accentClass: 'thistle',
   },
   {
     id: 'azure',
@@ -21,6 +29,8 @@ export const pathways: Pathway[] = [
     avgSalaryBoost: '+£16,000/yr',
     prepDetails:
       'ARM templates, Kubernetes AKS, CI/CD pipelines, and AZ-400 certification labs.',
+    accentColor: '#3C7A89', // Cerulean
+    accentClass: 'cerulean',
   },
   {
     id: 'fullstack',
@@ -31,6 +41,8 @@ export const pathways: Pathway[] = [
     avgSalaryBoost: '+£22,000/yr',
     prepDetails:
       'React 18, Next.js 14, Node.js, TypeScript, PostgreSQL, and portfolio projects.',
+    accentColor: '#9FA2B2', // Lavender Grey
+    accentClass: 'lavender-grey',
   },
   {
     id: 'cloud-mig',
@@ -41,5 +53,7 @@ export const pathways: Pathway[] = [
     avgSalaryBoost: '35% Infrastructure Cost Savings',
     prepDetails:
       'Complete AWS/Azure landing zone, security audit, database migration, & team upskilling.',
+    accentColor: '#2E4756', // Charcoal Blue
+    accentClass: 'charcoal-blue',
   },
 ];

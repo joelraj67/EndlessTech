@@ -14,10 +14,13 @@ import { featuredCourses } from '@/features/training/model/courses';
  * Warm editorial skin (Vinny.io v2): paper cards, accent-tinted badges,
  * terracotta hover lift. The "Explore All Academy Pathways" CTA uses the
  * terracotta fill — the one allowed large accent wash per section.
+ * 
+ * Enhanced: Uses thistle tone for soft editorial warmth + course cards
+ * with individual accent colors from the extended palette.
  */
 export default function TrainingSection() {
   return (
-    <Section tone="surface-alt" className="border-t border-line">
+    <Section tone="thistle" className="border-t border-line">
       <Container className="relative z-10">
         <SectionHeading
           tone="accent"

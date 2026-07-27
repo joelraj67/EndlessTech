@@ -10,6 +10,10 @@ import { advantages } from '@/features/shared-sections/model/advantages';
  *
  * Warm editorial skin (Vinny.io v2): recessed surface, terracotta icon
  * chips + metric pills, hover lift.
+ * 
+ * Enhanced: Each advantage card now uses a distinct color from the
+ * extended editorial palette for visual differentiation while maintaining
+ * terracotta as the single high-signal accent for CTAs.
  */
 export default function WhyChooseUsSection() {
   return (
@@ -37,10 +41,10 @@ export default function WhyChooseUsSection() {
             return (
               <GlassCard key={item.title} interactive className="group relative overflow-hidden p-8">
                 <div className="mb-6 flex items-center justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-accent/30 bg-accent-soft text-accent transition-transform group-hover:scale-110">
+                  <div className={`flex h-12 w-12 items-center justify-center rounded-lg border border-${item.accentClass}/30 bg-${item.accentClass}/10 text-${item.accentClass} transition-transform group-hover:scale-110`}>
                     <Icon className="h-6 w-6" />
                   </div>
-                  <span className="rounded-sm border border-accent/20 bg-accent-soft px-3 py-1 font-mono text-xs font-semibold text-accent-active">
+                  <span className={`rounded-sm border border-${item.accentClass}/20 bg-${item.accentClass}/10 px-3 py-1 font-mono text-xs font-semibold text-${item.accentClass}`}>
                     {item.metric}
                   </span>
                 </div>

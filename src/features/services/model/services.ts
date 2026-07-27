@@ -14,6 +14,15 @@ import type { Service } from '@/shared/types';
  * - /services/[slug] dynamic detail route (capabilities + CTA)
  *
  * Slugs are the route segments — must stay stable for SEO + external links.
+ * 
+ * Updated to use the extended editorial palette (cool editorial tones):
+ * - Thistle (#DBC2CF) — soft muted accent for IT Training
+ * - Lavender Grey (#9FA2B2) — muted neutral for Software Development
+ * - Cerulean (#3C7A89) — info state for Cloud Services
+ * - Charcoal Blue (#2E4756) — elevated dark for AI & Data Analytics
+ * - Jet Black (#16262E) — deepest dark for Technology Consulting
+ * 
+ * Terracotta (#B0552E) remains the single high-signal accent for CTAs.
  */
 export const services: Service[] = [
   {
@@ -37,9 +46,9 @@ export const services: Service[] = [
       'AI & Machine Learning Engineering (PyTorch, TensorFlow, LLM Fine-Tuning)',
       'Cybersecurity & Network Defense (CompTIA Security+, Ethical Hacking)',
     ],
-    accent: 'from-[#0066FF] to-[#00D4FF]',
+    accent: 'from-thistle to-thistle/70',
     cta: { label: 'Enroll / Request Course Prospectus', href: '/contact' },
-    accentColor: '#00D4FF',
+    accentColor: '#DBC2CF',
   },
   {
     slug: 'software-development',
@@ -61,9 +70,9 @@ export const services: Service[] = [
       'Legacy System Refactoring & Cloud Stack Modernization',
       'Automated Quality Assurance & Continuous Integration (CI/CD)',
     ],
-    accent: 'from-[#00D4FF] to-emerald-400',
+    accent: 'from-lavender-grey to-lavender-grey/70',
     cta: { label: 'Discuss Your Software Project', href: '/contact' },
-    accentColor: '#34d399',
+    accentColor: '#9FA2B2',
   },
   {
     slug: 'cloud-services',
@@ -85,9 +94,9 @@ export const services: Service[] = [
       'Cloud Cost Optimization & Multi-Cloud Architecture Review',
       '24/7 Managed Infrastructure Monitoring & UK Security Compliance',
     ],
-    accent: 'from-[#0066FF] to-[#8B5CF6]',
+    accent: 'from-cerulean to-cerulean/70',
     cta: { label: 'Schedule Cloud Assessment', href: '/contact' },
-    accentColor: '#0066FF',
+    accentColor: '#3C7A89',
   },
   {
     slug: 'ai-data-analytics',
@@ -109,9 +118,9 @@ export const services: Service[] = [
       'Secure LLM Integration, Vector Databases & RAG Pipelines',
       'Automated Predictive Analytics for Business Operations',
     ],
-    accent: 'from-[#8B5CF6] to-pink-500',
+    accent: 'from-charcoal-blue to-charcoal-blue/70',
     cta: { label: 'Discuss AI Implementation', href: '/contact' },
-    accentColor: '#8B5CF6',
+    accentColor: '#2E4756',
   },
   {
     slug: 'technology-consulting',
@@ -134,9 +143,9 @@ export const services: Service[] = [
       'Senior Executive Advisory for CTOs, IT Directors, and Product Leads',
       'Digital Transformation Lifecycle Management & Team Upskilling',
     ],
-    accent: 'from-amber-400 to-[#0066FF]',
+    accent: 'from-jet-black to-jet-black/70',
     cta: { label: 'Schedule Advisory Consultation', href: '/contact' },
-    accentColor: '#fbbf24',
+    accentColor: '#16262E',
   },
 ];
 

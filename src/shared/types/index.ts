@@ -30,6 +30,8 @@ export interface Advantage {
   title: string;
   metric: string;
   description: string;
+  accentColor: string;
+  accentClass: string;
 }
 
 /** A core service — drives the home grid, overview page, and the [slug] detail route. */
@@ -89,6 +91,8 @@ export interface AdvisoryStep {
   title: string;
   description: string;
   icon: LucideIcon;
+  accentColor: string;
+  accentClass: string;
 }
 
 /** A client testimonial. */
@@ -115,6 +119,8 @@ export interface Pathway {
   passRate: string;
   avgSalaryBoost: string;
   prepDetails: string;
+  accentColor: string;
+  accentClass: string;
 }
 
 /** A company value shown on the about page. */

@@ -12,6 +12,13 @@ import { advisorySteps } from '@/features/consulting/model/advisory-steps';
  *
  * Warm editorial skin (Vinny.io v2): paper cards, terracotta icon chips,
  * mono step markers in the muted editorial voice.
+ * 
+ * Enhanced: Each advisory step uses extended editorial palette colors:
+ * - 01 Technology Strategy: Thistle (soft training accent)
+ * - 02 Cloud Adoption: Cerulean (cloud info state)
+ * - 03 Enterprise AI: Charcoal Blue (elevated dark)
+ * - 04 Software Architecture: Lavender Grey (engineering neutral)
+ * - 05 Digital Transformation: Jet Black (deepest dark)
  */
 export default function ConsultingSection() {
   return (
@@ -43,20 +50,17 @@ export default function ConsultingSection() {
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {advisorySteps.map((item) => {
-            const Icon = item.icon;
-            return (
-              <GlassCard key={item.title} interactive className="group p-8">
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg border border-accent/30 bg-accent-soft text-accent transition-transform group-hover:scale-110">
-                  <Icon className="h-6 w-6" />
-                </div>
-                {/* Sequential step marker — justified by genuine sequence */}
-                <span className="mb-2 block font-mono text-xs text-line-strong">{item.step}</span>
-                <h3 className="mb-3 font-body text-xl font-semibold text-ink">{item.title}</h3>
-                <p className="font-body text-sm leading-relaxed text-muted">{item.description}</p>
-              </GlassCard>
-            );
-          })}
+          {advisorySteps.map((item) => (
+            <GlassCard key={item.title} interactive className="group p-8">
+              <div className={`mb-6 flex h-12 w-12 items-center justify-center rounded-lg border border-${item.accentClass}/30 bg-${item.accentClass}/10 text-${item.accentClass} transition-transform group-hover:scale-110`}>
+                <item.icon className="h-6 w-6" />
+              </div>
+              {/* Sequential step marker — justified by genuine sequence */}
+              <span className="mb-2 block font-mono text-xs text-line-strong">{item.step}</span>
+              <h3 className="mb-3 font-body text-xl font-semibold text-ink">{item.title}</h3>
+              <p className="font-body text-sm leading-relaxed text-muted">{item.description}</p>
+            </GlassCard>
+          ))}
         </div>
       </Container>
     </Section>
