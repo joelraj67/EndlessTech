@@ -11,30 +11,22 @@ import type { Service } from '@/shared/types';
 
 /**
  * ServiceDetailView — shared detail page for every /services/[slug] route.
- *
- * One component renders all 5 service detail pages, driven by the `Service`
- * data object. This replaces 5 near-identical static folders.
- *
- * Signature accent: a small terminal block that frames the service in the
- * brand's CLI vernacular — the capabilities read as a session output.
- *
- * Warm editorial skin (Vinny.io v2): paper canvas, serif heading, terracotta
- * capability bullets. The terminal stays the one dark surface.
+ * Unified Dark Glass (Aura Enterprise Design System).
  */
 export default function ServiceDetailView({ service }: { service: Service }) {
   const { title, description, capabilities, accentColor, cta } = service;
   const Icon = service.icon;
 
   return (
-    <main className="min-h-screen bg-paper pt-24 text-ink">
+    <main className="min-h-screen bg-bg text-slate-100">
       <PageHero
         eyebrow={service.tag.toUpperCase()}
         eyebrowIcon={Icon}
-        glowColor="bg-accent/10"
+        glowColor="bg-cerulean/20"
         title={
           <>
             {title} <br />
-            <GradientText>Solutions</GradientText>
+            <GradientText>Capabilities</GradientText>
           </>
         }
         subtitle={description}
@@ -43,15 +35,15 @@ export default function ServiceDetailView({ service }: { service: Service }) {
       <Section tone="surface-alt">
         <Container>
           <div className="mx-auto max-w-[1000px] space-y-6">
-            <h2 className="mb-8 text-center font-display text-3xl font-medium text-ink">
-              Capabilities
+            <h2 className="mb-8 text-center font-display text-3xl font-extrabold text-white">
+              Enterprise Capabilities & Deliverables
             </h2>
 
             {capabilities.map((item, idx) => (
-              <GlassCard key={item} interactive className="flex items-center gap-4 p-6">
-                <CheckCircle2 className="h-6 w-6 shrink-0" style={{ color: accentColor }} />
-                <p className="font-body text-base font-medium text-ink">{item}</p>
-                <span className="ml-auto hidden font-mono text-xs text-line-strong sm:block">
+              <GlassCard key={item} interactive className="flex items-center gap-4 p-6 border-white/10 hover:border-cerulean/50">
+                <CheckCircle2 className="h-6 w-6 shrink-0 text-cerulean" />
+                <p className="font-body text-base font-semibold text-slate-200">{item}</p>
+                <span className="ml-auto hidden font-mono text-xs text-slate-500 sm:block">
                   {String(idx + 1).padStart(2, '0')}
                 </span>
               </GlassCard>
@@ -72,11 +64,7 @@ export default function ServiceDetailView({ service }: { service: Service }) {
             <div className="pt-12 text-center">
               <Link
                 href={cta.href}
-                className="inline-flex items-center gap-3 rounded-md px-8 py-4 text-base font-semibold text-white shadow-xl transition-all duration-200 ease-out hover:-translate-y-0.5 hover:opacity-95 active:scale-[0.97]"
-                style={{
-                  backgroundColor: 'var(--color-accent)',
-                  boxShadow: `0 20px 25px -5px ${accentColor}40`,
-                }}
+                className="inline-flex items-center gap-3 rounded-full px-8 py-4 text-base font-semibold text-white bg-accent hover:bg-accent-hover shadow-[0_0_28px_rgba(176,85,46,0.35)] transition-all duration-200 ease-out hover:-translate-y-0.5 active:scale-[0.97]"
               >
                 <span>{cta.label}</span>
                 <ArrowRight className="h-5 w-5" />

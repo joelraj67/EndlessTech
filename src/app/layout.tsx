@@ -1,27 +1,19 @@
 import type { Metadata } from 'next';
-import { Inter, Newsreader, JetBrains_Mono } from 'next/font/google';
+import { Inter, Manrope, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 
 /**
- * Warm editorial type system (Vinny.io design system v2):
- * - Newsreader — serif display (headlines, hero).
+ * Premium enterprise type system (1.docx Option 1 — Recommended):
+ * - Manrope — sans display for headings / hero (communicates premium brand).
  * - Inter — sans body / UI / subheads.
  * - JetBrains Mono — technical labels, eyebrows, terminal.
- *
- * Replaces the prior Plus Jakarta Sans + Manrope + Inter stack by the
- * sanctioned divergence recorded in design-system-plan.md (Precedence #1:
- * explicit user request for richer, serif-led typography).
  */
 const inter = Inter({ subsets: ['latin'], variable: '--font-body', display: 'swap' });
-const newsreader = Newsreader({
+const manrope = Manrope({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
-  style: ['normal', 'italic'],
-  // Newsreader ships optical-size axes that aren't in Next's precalculated
-  // fallback-metrics table; skip the automatic fallback override (we ship a
-  // serif fallback stack + display: swap, so CLS stays negligible).
-  adjustFontFallback: false,
+  weight: ['400', '500', '600', '700', '800'],
 });
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -47,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en-GB"
-      className={`${inter.variable} ${newsreader.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${manrope.variable} ${jetbrainsMono.variable}`}
     >
       <body className="font-body antialiased bg-paper text-ink">{children}</body>
     </html>

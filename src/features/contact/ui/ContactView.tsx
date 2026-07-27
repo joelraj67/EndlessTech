@@ -7,6 +7,7 @@ import { Container } from '@/shared/ui/container';
 import { Section } from '@/shared/ui/section';
 import { GlassCard } from '@/shared/ui/glass-card';
 import { GradientText } from '@/shared/ui/gradient-text';
+import { Badge } from '@/shared/ui/badge';
 import { site } from '@/shared/lib/site';
 
 interface FormData {
@@ -27,7 +28,6 @@ export default function ContactView() {
     message: '',
   });
 
-  // Google Forms config from environment
   const GOOGLE_FORM_URL = process.env.NEXT_PUBLIC_GOOGLE_FORM_URL || '';
   const ENTRY_IDS = {
     name: process.env.NEXT_PUBLIC_GOOGLE_FORM_ENTRY_NAME || 'entry.XXXXXXXXX',
@@ -62,14 +62,12 @@ export default function ContactView() {
       formDataToSubmit.append(ENTRY_IDS.service, formData.service);
       formDataToSubmit.append(ENTRY_IDS.message, formData.message);
 
-      // Submit via fetch with no-cors (required for Google Forms cross-origin)
       await fetch(GOOGLE_FORM_URL, {
         method: 'POST',
         mode: 'no-cors',
         body: formDataToSubmit,
       });
 
-      // Success assumed if no network error (can't read response due to no-cors)
       setSubmitted(true);
       setFormData({ name: '', email: '', service: 'training', message: '' });
     } catch (err) {
@@ -81,7 +79,7 @@ export default function ContactView() {
   };
 
   return (
-    <main className="min-h-screen bg-paper pt-24 text-ink">
+    <main className="min-h-screen bg-bg text-slate-100">
       <PageHero
         eyebrow="DIRECT UK CONSULTATION"
         eyebrowIcon={Sparkles}
@@ -99,50 +97,50 @@ export default function ContactView() {
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
             {/* Left column: direct info */}
             <div className="space-y-8 lg:col-span-5">
-              <GlassCard className="space-y-6 p-8">
-                <h2 className="font-display text-2xl font-medium text-ink">Contact Details</h2>
+              <GlassCard className="space-y-6 p-9 border-white/15">
+                <h2 className="font-display text-2xl font-extrabold text-white">Contact Details</h2>
 
                 <div className="space-y-4">
-                  <div className="flex items-start gap-4 rounded-md border border-line bg-surface p-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-accent-soft text-accent">
+                  <div className="flex items-start gap-4 rounded-xl border border-white/15 bg-white/10 p-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-sky-500/20 text-sky-300">
                       <Mail className="h-5 w-5" />
                     </div>
                     <div>
-                      <h3 className="font-mono text-xs uppercase text-muted">Email Us</h3>
-                      <p className="text-sm font-medium text-ink">{site.contact.email}</p>
+                      <h3 className="font-mono text-xs uppercase font-bold text-sky-300">Email Us</h3>
+                      <p className="text-sm font-semibold text-white">{site.contact.email}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 rounded-md border border-line bg-surface p-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-accent-soft text-accent">
+                  <div className="flex items-start gap-4 rounded-xl border border-white/15 bg-white/10 p-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-sky-500/20 text-sky-300">
                       <Phone className="h-5 w-5" />
                     </div>
                     <div>
-                      <h3 className="font-mono text-xs uppercase text-muted">Call Us</h3>
-                      <p className="text-sm font-medium text-ink">{site.contact.phone}</p>
+                      <h3 className="font-mono text-xs uppercase font-bold text-sky-300">Call Us</h3>
+                      <p className="text-sm font-semibold text-white">{site.contact.phone}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 rounded-md border border-line bg-surface p-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-accent-soft text-accent">
+                  <div className="flex items-start gap-4 rounded-xl border border-white/15 bg-white/10 p-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-sky-500/20 text-sky-300">
                       <MapPin className="h-5 w-5" />
                     </div>
                     <div>
-                      <h3 className="font-mono text-xs uppercase text-muted">UK Office</h3>
-                      <p className="text-sm font-medium text-ink">{site.contact.hq}</p>
+                      <h3 className="font-mono text-xs uppercase font-bold text-sky-300">UK Office</h3>
+                      <p className="text-sm font-semibold text-white">{site.contact.hq}</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 border-t border-line pt-4 font-mono text-xs text-success">
+                <div className="flex items-center gap-2 border-t border-white/15 pt-4 font-mono text-xs text-emerald-400 font-semibold">
                   <Clock className="h-4 w-4" />
                   <span>Guaranteed Response within 24 Hours</span>
                 </div>
               </GlassCard>
 
-              <GlassCard className="p-6">
-                <div className="flex items-center gap-3 font-mono text-xs text-muted">
-                  <ShieldCheck className="h-5 w-5 text-accent" />
+              <GlassCard className="p-9 border-white/15">
+                <div className="flex items-center gap-3 font-mono text-xs text-slate-200 font-medium">
+                  <ShieldCheck className="h-5 w-5 text-sky-400" />
                   <span>Your information is protected under UK GDPR standards.</span>
                 </div>
               </GlassCard>
@@ -150,19 +148,19 @@ export default function ContactView() {
 
             {/* Right column: contact form */}
             <div className="lg:col-span-7">
-              <GlassCard className="relative p-8 sm:p-10">
+              <GlassCard className="relative p-9 sm:p-10 border-white/15">
                 {submitted ? (
                   <div className="space-y-4 py-16 text-center">
-                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-success/40 bg-success/10 text-success">
+                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-emerald-400/40 bg-emerald-500/20 text-emerald-300">
                       <CheckCircle2 className="h-8 w-8" />
                     </div>
-                    <h3 className="font-display text-2xl font-medium text-ink">Message Received!</h3>
-                    <p className="mx-auto max-w-[400px] text-sm text-muted">
+                    <h3 className="font-display text-2xl font-bold text-white">Message Received!</h3>
+                    <p className="mx-auto max-w-[400px] text-sm text-slate-200">
                       Thank you for reaching out. A senior Endless Tech technology specialist will contact you within 24 hours.
                     </p>
                     <button
                       onClick={() => setSubmitted(false)}
-                      className="mt-6 inline-flex items-center gap-2 font-mono text-xs uppercase text-accent hover:underline"
+                      className="mt-6 inline-flex items-center gap-2 font-mono text-xs uppercase text-sky-300 hover:underline font-bold"
                     >
                       <Send className="h-4 w-4" />
                       <span>Send another message</span>
@@ -170,7 +168,6 @@ export default function ContactView() {
                   </div>
                 ) : (
                   <>
-                    {/* Hidden iframe to capture Google Forms response */}
                     <iframe
                       name="gform_target"
                       id="gform_target"
@@ -185,25 +182,25 @@ export default function ContactView() {
                       target="gform_target"
                     >
                       {!isConfigured && (
-                        <div className="rounded-md border border-warning/40 bg-warning/10 p-4 text-sm text-warning">
-                          ⚠️ Google Forms not configured. Add your form URL and entry IDs to <code>.env.local</code> (see <code>.env.example</code>).
+                        <div className="rounded-lg border border-amber-400/40 bg-amber-500/15 p-4 text-sm text-amber-300 font-mono font-medium">
+                          ⚠️ Google Forms not configured. Add your form URL and entry IDs to <code>.env.local</code>.
                         </div>
                       )}
 
                       {error && (
-                        <div className="rounded-md border border-error/40 bg-error/10 p-4 text-sm text-error">
+                        <div className="rounded-lg border border-rose-400/40 bg-rose-500/15 p-4 text-sm text-rose-300 font-mono font-medium">
                           {error}
                         </div>
                       )}
 
-                      <h2 className="mb-2 font-display text-2xl font-medium text-ink">Send Us a Message</h2>
-                      <p className="mb-6 text-sm text-muted">
+                      <h2 className="mb-2 font-display text-2xl font-extrabold text-white">Send Us a Message</h2>
+                      <p className="mb-6 text-sm text-slate-200">
                         Fill out the form below to discuss training courses or consulting services.
                       </p>
 
                       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                         <div>
-                          <label htmlFor="name" className="mb-2 block font-mono text-xs uppercase text-ink">
+                          <label htmlFor="name" className="mb-2 block font-mono text-xs uppercase font-bold text-sky-300">
                             Full Name *
                           </label>
                           <input
@@ -215,12 +212,12 @@ export default function ContactView() {
                             value={formData.name}
                             onChange={handleChange}
                             disabled={isSubmitting || !isConfigured}
-                            className="w-full rounded-md border border-line-strong bg-surface px-4 py-3.5 text-sm text-ink placeholder-muted/60 transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent disabled:opacity-50"
+                            className="w-full rounded-lg border border-white/20 bg-white/10 px-4 py-3.5 text-sm text-white placeholder-slate-400 transition-all focus:border-sky-400 focus:outline-none focus:ring-1 focus:ring-sky-400 disabled:opacity-50"
                           />
                         </div>
 
                         <div>
-                          <label htmlFor="email" className="mb-2 block font-mono text-xs uppercase text-ink">
+                          <label htmlFor="email" className="mb-2 block font-mono text-xs uppercase font-bold text-sky-300">
                             Work Email *
                           </label>
                           <input
@@ -232,13 +229,13 @@ export default function ContactView() {
                             value={formData.email}
                             onChange={handleChange}
                             disabled={isSubmitting || !isConfigured}
-                            className="w-full rounded-md border border-line-strong bg-surface px-4 py-3.5 text-sm text-ink placeholder-muted/60 transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent disabled:opacity-50"
+                            className="w-full rounded-lg border border-white/20 bg-white/10 px-4 py-3.5 text-sm text-white placeholder-slate-400 transition-all focus:border-sky-400 focus:outline-none focus:ring-1 focus:ring-sky-400 disabled:opacity-50"
                           />
                         </div>
                       </div>
 
                       <div>
-                        <label htmlFor="service" className="mb-2 block font-mono text-xs uppercase text-ink">
+                        <label htmlFor="service" className="mb-2 block font-mono text-xs uppercase font-bold text-sky-300">
                           Inquiry Type
                         </label>
                         <select
@@ -247,7 +244,7 @@ export default function ContactView() {
                           value={formData.service}
                           onChange={handleChange}
                           disabled={isSubmitting || !isConfigured}
-                          className="w-full rounded-md border border-line-strong bg-surface px-4 py-3.5 text-sm text-ink transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent disabled:opacity-50"
+                          className="w-full rounded-lg border border-white/20 bg-slate-900 px-4 py-3.5 text-sm text-white transition-all focus:border-sky-400 focus:outline-none focus:ring-1 focus:ring-sky-400 disabled:opacity-50"
                         >
                           <option value="training">IT Training & Certifications</option>
                           <option value="software">Custom Software Development</option>
@@ -258,7 +255,7 @@ export default function ContactView() {
                       </div>
 
                       <div>
-                        <label htmlFor="message" className="mb-2 block font-mono text-xs uppercase text-ink">
+                        <label htmlFor="message" className="mb-2 block font-mono text-xs uppercase font-bold text-sky-300">
                           Project Details / Inquiry *
                         </label>
                         <textarea
@@ -270,14 +267,14 @@ export default function ContactView() {
                           value={formData.message}
                           onChange={handleChange}
                           disabled={isSubmitting || !isConfigured}
-                          className="w-full resize-none rounded-md border border-line-strong bg-surface px-4 py-3.5 text-sm text-ink placeholder-muted/60 transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent disabled:opacity-50"
+                          className="w-full resize-none rounded-lg border border-white/20 bg-white/10 px-4 py-3.5 text-sm text-white placeholder-slate-400 transition-all focus:border-sky-400 focus:outline-none focus:ring-1 focus:ring-sky-400 disabled:opacity-50"
                         />
                       </div>
 
                       <button
                         type="submit"
                         disabled={isSubmitting || !isConfigured}
-                        className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-accent py-4 text-base font-semibold text-white shadow-xl shadow-accent/25 transition-all duration-200 ease-out hover:bg-accent-hover active:scale-[0.97] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:bg-accent disabled:active:scale-100"
+                        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent py-4 text-base font-semibold text-white shadow-[0_0_28px_rgba(251,146,60,0.35)] transition-all duration-200 ease-out hover:bg-accent-hover active:scale-[0.97] disabled:opacity-70 disabled:cursor-not-allowed"
                       >
                         {isSubmitting ? (
                           <>

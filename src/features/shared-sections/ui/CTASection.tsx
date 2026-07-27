@@ -3,53 +3,58 @@ import Link from 'next/link';
 import { ArrowRight, Sparkles, PhoneCall } from 'lucide-react';
 import { Container } from '@/shared/ui/container';
 import { Section } from '@/shared/ui/section';
+import { Badge } from '@/shared/ui/badge';
 
 /**
  * CTASection — final conversion banner.
- *
- * Warm editorial skin (Vinny.io v2): the one place the terracotta fills a
- * surface — a full accent band. Buttons invert (white-on-accent / outline).
- * Used once per page, at the close.
+ * Unified Dark Glass (Aura Enterprise Design System).
  */
 export default function CTASection() {
   return (
     <Section tone="paper" className="overflow-hidden">
       <Container>
-        <div className="relative overflow-hidden rounded-xl bg-accent p-12 text-center shadow-2xl sm:p-16">
-          {/* Overlay pattern */}
-          <div className="absolute inset-0 bg-panel/20 backdrop-blur-[2px]" />
-          <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-white/20 blur-3xl" />
-          <div className="absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-panel/30 blur-3xl" />
+        <div
+          className="relative overflow-hidden rounded-2xl p-12 text-center shadow-2xl sm:p-16 border border-white/20"
+          style={{
+            background: 'linear-gradient(135deg, #0b132b 0%, #1e293b 50%, #060e20 100%)',
+          }}
+        >
+          {/* Atmospheric depth layers */}
+          <div className="absolute inset-0 opacity-40 pointer-events-none"
+            style={{ background: 'radial-gradient(ellipse at 20% 50%, rgba(244,114,182,0.25) 0%, transparent 60%)' }} />
+          <div className="absolute inset-0 opacity-30 pointer-events-none"
+            style={{ background: 'radial-gradient(ellipse at 80% 20%, rgba(56,189,248,0.3) 0%, transparent 55%)' }} />
+          <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
 
-          <div className="relative z-10 mx-auto max-w-[760px]">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 font-mono text-xs text-white backdrop-blur-md">
-              <Sparkles className="h-4 w-4 text-white" />
+          <div className="relative z-10 mx-auto max-w-[780px]">
+            <Badge tone="accent" className="mb-6">
+              <Sparkles className="h-4 w-4 text-sky-300" />
               <span>START YOUR JOURNEY WITH ENDLESS TECH</span>
-            </div>
+            </Badge>
 
-            <h2 className="mb-6 font-display text-3xl font-medium leading-tight tracking-tight text-white sm:text-5xl">
+            <h2 className="mb-6 font-display text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
               Ready to Accelerate Your <br />
               Skills &amp; Digital Growth?
             </h2>
 
-            <p className="mb-10 font-body text-lg leading-relaxed text-white/90">
+            <p className="mb-10 font-body text-lg leading-relaxed text-slate-200">
               Talk to our UK technology experts today. Whether you need career training or enterprise cloud solutions, we deliver results.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/training"
-                className="inline-flex items-center gap-2 rounded-md bg-white px-8 py-4 text-base font-semibold text-accent shadow-xl transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-paper active:scale-[0.97]"
+                className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-base font-semibold text-white shadow-[0_0_28px_rgba(251,146,60,0.4)] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-accent-hover active:scale-[0.97]"
               >
                 <span>Explore Training Courses</span>
-                <ArrowRight className="h-5 w-5 text-accent" />
+                <ArrowRight className="h-5 w-5" />
               </Link>
 
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-md border border-white/40 bg-panel/30 px-8 py-4 text-base font-semibold text-white backdrop-blur-md transition-all duration-200 ease-out hover:bg-panel/50 active:scale-[0.97]"
+                className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-8 py-4 text-base font-semibold text-white backdrop-blur-md transition-all duration-200 ease-out hover:bg-white/20 active:scale-[0.97]"
               >
-                <PhoneCall className="h-5 w-5" />
+                <PhoneCall className="h-5 w-5 text-sky-300" />
                 <span>Talk to an Expert</span>
               </Link>
             </div>

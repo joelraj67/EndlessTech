@@ -19,10 +19,7 @@ type SectionHeadingProps = {
 
 /**
  * Reusable section header: eyebrow badge + display title + subtitle.
- *
- * Warm editorial skin (Vinny.io v2): titles set in the serif display face
- * at solid ink — NOT gradient-clipped. The italic accent word is reserved
- * as a deliberate flourish in <GradientText>, used sparingly.
+ * Unified Dark Glass (Aura Enterprise Design System).
  */
 export function SectionHeading({
   eyebrow,
@@ -47,11 +44,11 @@ export function SectionHeading({
         {EyebrowIcon && <EyebrowIcon className="h-4 w-4" />}
         {eyebrow}
       </Badge>
-      <h2 className="mb-6 font-display text-4xl font-medium leading-tight tracking-tight text-ink sm:text-5xl">
+      <h2 className="mb-6 font-display text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
         {title}
       </h2>
       {subtitle && (
-        <p className="font-body text-lg leading-relaxed text-muted">
+        <p className="font-body text-lg leading-relaxed text-slate-300">
           {subtitle}
         </p>
       )}

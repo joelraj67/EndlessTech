@@ -51,7 +51,7 @@ export default function ConsultingSection() {
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {advisorySteps.map((item) => (
-            <GlassCard key={item.title} interactive className="group p-8">
+            <GlassCard key={item.title} interactive className="group p-10">
               <div className={`mb-6 flex h-12 w-12 items-center justify-center rounded-lg border border-${item.accentClass}/30 bg-${item.accentClass}/10 text-${item.accentClass} transition-transform group-hover:scale-110`}>
                 <item.icon className="h-6 w-6" />
               </div>

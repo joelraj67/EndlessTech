@@ -50,7 +50,7 @@ const config: Config = {
         DEFAULT: 'var(--color-border)',
       },
       fontFamily: {
-        display: ['var(--font-display)', 'Georgia', '"Times New Roman"', 'serif'],
+        display: ['var(--font-display)', 'system-ui', '-apple-system', 'sans-serif'],
         body: ['var(--font-body)', 'system-ui', '-apple-system', 'sans-serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
         // Alias sans → body so legacy `font-sans` refs keep working.
@@ -80,6 +80,15 @@ const config: Config = {
       maxWidth: {
         content: '1280px',
         editorial: '720px',
+      },
+      animation: {
+        marquee: 'marquee var(--duration) linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(calc(-50% - 1rem))' },
+        },
       },
     },
   },

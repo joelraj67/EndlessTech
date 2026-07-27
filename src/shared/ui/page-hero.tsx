@@ -5,19 +5,13 @@ import type { BadgeTone } from './badge';
 
 /**
  * PageHero — the shared hero header used at the top of every interior page.
- *
- * Replaces 7 hand-built hero blocks that were structurally identical:
- * glow → badge → h1 with accent → subtitle.
- *
- * Warm editorial skin (Vinny.io v2): a paper panel with a soft warm glow
- * (no scattered ambient blurs), serif display headline, terracotta accent
- * word.
+ * Unified Dark Glass (Aura Enterprise Design System).
  */
 export function PageHero({
   eyebrow,
   eyebrowIcon: EyebrowIcon,
   eyebrowTone = 'accent',
-  glowColor = 'bg-accent/10',
+  glowColor = 'bg-cerulean/15',
   title,
   subtitle,
 }: {
@@ -29,23 +23,26 @@ export function PageHero({
   subtitle: string;
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-line bg-paper py-24">
+    <section className="relative overflow-hidden border-b border-white/10 bg-bg pb-20 pt-32">
+      {/* Cinematic mesh atmosphere */}
       <div
         className={cn(
-          'pointer-events-none absolute left-1/2 top-1/2 h-[350px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[140px]',
+          'pointer-events-none absolute left-1/2 top-1/2 h-[450px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-35 blur-[160px]',
           glowColor,
         )}
       />
+      <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-[0.35]" />
+
       <Container className="relative z-10">
-        <div className="mx-auto max-w-[780px] text-center">
+        <div className="mx-auto max-w-[820px] text-center">
           <Badge tone={eyebrowTone} className="mb-6">
             {EyebrowIcon && <EyebrowIcon className="h-4 w-4" />}
             <span>{eyebrow}</span>
           </Badge>
-          <h1 className="mb-6 font-display text-4xl font-medium leading-tight tracking-tight text-ink sm:text-6xl">
+          <h1 className="mb-6 font-display text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
             {title}
           </h1>
-          <p className="font-body text-lg leading-relaxed text-muted">
+          <p className="font-body text-lg leading-relaxed text-slate-300">
             {subtitle}
           </p>
         </div>

@@ -3,17 +3,17 @@ import { cn } from '@/shared/lib/utils';
 export type BadgeTone = 'accent' | 'success' | 'warning' | 'danger' | 'info' | 'neutral';
 
 const toneClass: Record<BadgeTone, string> = {
-  accent: 'text-accent-active bg-accent-soft border-accent/20',
-  success: 'text-success bg-success/10 border-success/20',
-  warning: 'text-warning bg-warning/10 border-warning/20',
-  danger: 'text-danger bg-danger/10 border-danger/20',
-  info: 'text-info bg-info/10 border-info/20',
-  neutral: 'text-muted bg-surface-alt border-line',
+  accent: 'text-sky-300 bg-sky-500/20 border-sky-400/40 shadow-[0_0_14px_rgba(56,189,248,0.25)]',
+  success: 'text-emerald-300 bg-emerald-500/20 border-emerald-400/40 shadow-[0_0_14px_rgba(52,211,153,0.25)]',
+  warning: 'text-amber-300 bg-amber-500/20 border-amber-400/40 shadow-[0_0_14px_rgba(251,191,36,0.25)]',
+  danger: 'text-rose-300 bg-rose-500/20 border-rose-400/40 shadow-[0_0_14px_rgba(251,113,133,0.25)]',
+  info: 'text-cyan-300 bg-cyan-500/20 border-cyan-400/40 shadow-[0_0_14px_rgba(103,232,249,0.25)]',
+  neutral: 'text-slate-200 bg-white/10 border-white/25',
 };
 
 /**
  * Mono "eyebrow" pill — used as a section label, card tag, or status chip.
- * The mono voice is the brand's structural accent, used with restraint.
+ * High Contrast (WCAG AAA) for Dark Mode.
  */
 export function Badge({
   tone = 'accent',
@@ -27,7 +27,7 @@ export function Badge({
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-2 rounded-sm border px-3 py-1.5 font-mono text-xs tracking-wide',
+        'inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 font-mono text-xs font-semibold tracking-wide backdrop-blur-md',
         toneClass[tone],
         className,
       )}

@@ -3,34 +3,30 @@ import { ShieldCheck } from 'lucide-react';
 import { Container } from '@/shared/ui/container';
 import { Section } from '@/shared/ui/section';
 import { GlassCard } from '@/shared/ui/glass-card';
+import { Badge } from '@/shared/ui/badge';
+import { GradientText } from '@/shared/ui/gradient-text';
 import { advantages } from '@/features/shared-sections/model/advantages';
 
 /**
  * WhyChooseUsSection — the "Endless Tech Advantage" feature grid.
- *
- * Warm editorial skin (Vinny.io v2): recessed surface, terracotta icon
- * chips + metric pills, hover lift.
- * 
- * Enhanced: Each advantage card now uses a distinct color from the
- * extended editorial palette for visual differentiation while maintaining
- * terracotta as the single high-signal accent for CTAs.
+ * High-Contrast AAA Typography & Smoked Glass Cards.
  */
 export default function WhyChooseUsSection() {
   return (
-    <Section tone="surface" className="border-t border-line">
+    <Section tone="charcoal-blue" className="border-t border-white/10">
       <Container>
         <div className="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <div className="mb-4 inline-flex items-center gap-2 rounded-sm border border-line bg-surface-alt px-3.5 py-1.5 font-mono text-xs text-accent">
-              <ShieldCheck className="h-4 w-4" />
+            <Badge tone="accent" className="mb-4">
+              <ShieldCheck className="h-4 w-4 text-sky-300" />
               <span>THE ENDLESS TECH ADVANTAGE</span>
-            </div>
-            <h2 className="font-display text-4xl font-medium tracking-tight text-ink sm:text-5xl">
+            </Badge>
+            <h2 className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
               Technology Expertise. <br />
-              <span className="text-accent italic">Real Business Impact.</span>
+              <GradientText>Real Business Impact.</GradientText>
             </h2>
           </div>
-          <p className="max-w-[420px] font-body text-base leading-relaxed text-muted">
+          <p className="max-w-[420px] font-body text-base leading-relaxed text-slate-300">
             Why leading UK businesses and ambitious professionals choose Endless Tech as their trusted technology partner.
           </p>
         </div>
@@ -39,17 +35,21 @@ export default function WhyChooseUsSection() {
           {advantages.map((item) => {
             const Icon = item.icon;
             return (
-              <GlassCard key={item.title} interactive className="group relative overflow-hidden p-8">
+              <GlassCard
+                key={item.title}
+                interactive
+                className="group relative overflow-hidden p-9 border-white/15 hover:border-sky-400/50"
+              >
                 <div className="mb-6 flex items-center justify-between">
-                  <div className={`flex h-12 w-12 items-center justify-center rounded-lg border border-${item.accentClass}/30 bg-${item.accentClass}/10 text-${item.accentClass} transition-transform group-hover:scale-110`}>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-sky-400/30 bg-sky-500/15 text-sky-300 transition-transform group-hover:scale-110">
                     <Icon className="h-6 w-6" />
                   </div>
-                  <span className={`rounded-sm border border-${item.accentClass}/20 bg-${item.accentClass}/10 px-3 py-1 font-mono text-xs font-semibold text-${item.accentClass}`}>
+                  <span className="rounded-full border border-sky-400/30 bg-sky-500/15 px-3 py-1 font-mono text-xs font-bold text-sky-300 shadow-[0_0_12px_rgba(56,189,248,0.25)]">
                     {item.metric}
                   </span>
                 </div>
-                <h3 className="mb-3 font-body text-xl font-semibold text-ink">{item.title}</h3>
-                <p className="font-body text-sm leading-relaxed text-muted">{item.description}</p>
+                <h3 className="mb-3 font-body text-xl font-bold text-white">{item.title}</h3>
+                <p className="font-body text-sm leading-relaxed text-slate-200">{item.description}</p>
               </GlassCard>
             );
           })}

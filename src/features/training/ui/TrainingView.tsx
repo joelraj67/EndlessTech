@@ -6,22 +6,21 @@ import { Container } from '@/shared/ui/container';
 import { Section } from '@/shared/ui/section';
 import { GlassCard } from '@/shared/ui/glass-card';
 import { GradientText } from '@/shared/ui/gradient-text';
+import { Badge } from '@/shared/ui/badge';
 import { courses } from '@/features/training/model/courses';
 
 /**
  * TrainingView — full course catalogue (6 courses).
- *
- * Warm editorial skin (Vinny.io v2): paper cards, accent-tinted badges,
- * serif course titles, terracotta hover lift.
+ * Unified Dark Glass (Aura Enterprise Design System).
  */
 export default function TrainingView() {
   return (
-    <main className="min-h-screen bg-paper pt-24 text-ink">
+    <main className="min-h-screen bg-bg text-slate-100">
       <PageHero
         eyebrow="UK TECHNOLOGY ACADEMY"
         eyebrowIcon={GraduationCap}
         eyebrowTone="accent"
-        glowColor="bg-accent/10"
+        glowColor="bg-cerulean/20"
         title={
           <>
             Professional IT Training & <br />
@@ -35,36 +34,34 @@ export default function TrainingView() {
         <Container>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {courses.map((c) => (
-              <GlassCard key={c.slug} interactive className="group flex flex-col justify-between p-8">
+              <GlassCard key={c.slug} interactive className="group flex flex-col justify-between p-9 border-white/10 hover:border-cerulean/50">
                 <div>
                   <div className="mb-4 flex items-center justify-between">
-                    <span className="rounded-sm border border-accent/30 bg-accent-soft px-3 py-1 font-mono text-xs text-accent-active">
-                      {c.badge}
-                    </span>
-                    <span className="font-mono text-xs text-muted">{c.duration}</span>
+                    <Badge tone="accent">{c.badge}</Badge>
+                    <span className="font-mono text-xs text-slate-400">{c.duration}</span>
                   </div>
 
-                  <h2 className="mb-3 font-display text-xl font-medium text-ink transition-colors group-hover:text-accent">
+                  <h2 className="mb-3 font-display text-xl font-bold text-white transition-colors group-hover:text-cerulean">
                     {c.title}
                   </h2>
 
                   {c.desc && (
-                    <p className="mb-6 font-body text-xs leading-relaxed text-muted">{c.desc}</p>
+                    <p className="mb-6 font-body text-xs leading-relaxed text-slate-300">{c.desc}</p>
                   )}
                 </div>
 
-                <div className="space-y-3 border-t border-line pt-4">
-                  <div className="flex items-center justify-between font-mono text-xs text-muted">
+                <div className="space-y-4 border-t border-white/10 pt-4">
+                  <div className="flex items-center justify-between font-mono text-xs text-slate-400">
                     <span>Level: {c.level}</span>
                     {c.format && <span>Format: {c.format}</span>}
                   </div>
 
                   <Link
                     href="/contact"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-line-strong bg-surface py-3 font-mono text-xs font-semibold text-ink transition-colors hover:bg-surface-alt hover:border-accent hover:text-accent"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 py-3 font-mono text-xs font-semibold text-white transition-all hover:bg-cerulean hover:border-cerulean hover:shadow-[0_0_20px_rgba(60,122,137,0.35)]"
                   >
                     <span>Enroll / Request Syllabus</span>
-                    <ArrowRight className="h-3.5 w-3.5 text-accent" />
+                    <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>
               </GlassCard>

@@ -10,17 +10,20 @@ import { cn } from '@/shared/lib/utils';
 export function GlassCard({
   interactive = false,
   className,
+  style,
   children,
 }: {
   interactive?: boolean;
   className?: string;
+  style?: React.CSSProperties;
   children: React.ReactNode;
 }) {
   return (
     <div
+      style={style}
       className={cn(
-        'glass-card rounded-lg border border-line',
-        interactive && 'glass-card-hover',
+        'glass-card rounded-lg border border-line backdrop-blur-md transition-all duration-300',
+        interactive && 'glass-card-hover hover:border-thistle/40 hover:shadow-lg',
         className,
       )}
     >

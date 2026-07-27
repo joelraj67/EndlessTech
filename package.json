@@ -3,20 +3,22 @@
   "version": "1.0.0",
   "description": "Enterprise-grade technology consultancy website",
   "private": true,
-    "scripts": {
-      "dev": "next dev",
-      "build": "next build",
-      "start": "next start",
-      "lint": "next lint",
-      "type-check": "npx tsc --noEmit",
-      "test": "vitest",
-      "test:watch": "vitest run",
-      "test:cov": "vitest run --coverage"
-    },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "npx tsc --noEmit",
+    "test": "vitest",
+    "test:watch": "vitest run",
+    "test:cov": "vitest run --coverage"
+  },
   "dependencies": {
     "clsx": "^2.1.1",
+    "framer-motion": "^12.42.2",
     "lucide-react": "^0.350.0",
     "next": "14.2.0",
+    "playwright": "^1.62.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "tailwind-merge": "^3.6.0"
