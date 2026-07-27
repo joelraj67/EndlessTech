@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, Sparkles, CheckCircle2, ShieldCheck } from 'lucide-react';
+import React, { useState, FormEvent, ChangeEvent } from 'react';
+import { Mail, Phone, MapPin, Clock, Send, Sparkles, CheckCircle2, ShieldCheck, Loader2 } from 'lucide-react';
 import { PageHero } from '@/shared/ui/page-hero';
 import { Container } from '@/shared/ui/container';
 import { Section } from '@/shared/ui/section';
@@ -9,19 +9,68 @@ import { GlassCard } from '@/shared/ui/glass-card';
 import { GradientText } from '@/shared/ui/gradient-text';
 import { site } from '@/shared/lib/site';
 
+interface FormData {
+  name: string;
+  email: string;
+  service: string;
+  message: string;
+}
+
 /**
  * ContactView — client component (interactive form).
- * Form is front-end only for now (no backend); submit shows success state.
+ * Form submits to Web3Forms API for serverless form handling.
  *
  * Warm editorial skin (Vinny.io v2): paper panels, hairline-bordered inputs
  * with a soft terracotta focus halo, serif headings.
  */
 export default function ContactView() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    email: '',
+    service: 'training',
+    message: '',
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError(null);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          ...formData,
+          subject: `New Contact Form Submission from ${formData.name}`,
+          from_name: formData.name,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        setError(result.message || 'Something went wrong. Please try again later.');
+      }
+    } catch (err) {
+      setError('Network error. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -112,6 +161,12 @@ export default function ContactView() {
                       Fill out the form below to discuss training courses or consulting services.
                     </p>
 
+                    {error && (
+                      <div className="rounded-md border border-error/40 bg-error/10 p-4 text-sm text-error">
+                        {error}
+                      </div>
+                    )}
+
                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                       <div>
                         <label htmlFor="name" className="mb-2 block font-mono text-xs uppercase text-ink">
@@ -123,7 +178,10 @@ export default function ContactView() {
                           name="name"
                           required
                           placeholder="Sarah Chen"
-                          className="w-full rounded-md border border-line-strong bg-surface px-4 py-3.5 text-sm text-ink placeholder-muted/60 transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+                          value={formData.name}
+                          onChange={handleChange}
+                          disabled={isSubmitting}
+                          className="w-full rounded-md border border-line-strong bg-surface px-4 py-3.5 text-sm text-ink placeholder-muted/60 transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent disabled:opacity-50"
                         />
                       </div>
 
@@ -137,7 +195,10 @@ export default function ContactView() {
                           name="email"
                           required
                           placeholder="sarah@company.co.uk"
-                          className="w-full rounded-md border border-line-strong bg-surface px-4 py-3.5 text-sm text-ink placeholder-muted/60 transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+                          value={formData.email}
+                          onChange={handleChange}
+                          disabled={isSubmitting}
+                          className="w-full rounded-md border border-line-strong bg-surface px-4 py-3.5 text-sm text-ink placeholder-muted/60 transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent disabled:opacity-50"
                         />
                       </div>
                     </div>
@@ -149,7 +210,10 @@ export default function ContactView() {
                       <select
                         id="service"
                         name="service"
-                        className="w-full rounded-md border border-line-strong bg-surface px-4 py-3.5 text-sm text-ink transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+                        value={formData.service}
+                        onChange={handleChange}
+                        disabled={isSubmitting}
+                        className="w-full rounded-md border border-line-strong bg-surface px-4 py-3.5 text-sm text-ink transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent disabled:opacity-50"
                       >
                         <option value="training">IT Training & Certifications</option>
                         <option value="software">Custom Software Development</option>
@@ -169,16 +233,29 @@ export default function ContactView() {
                         rows={5}
                         required
                         placeholder="Tell us about your team's upskilling needs or upcoming software project..."
-                        className="w-full resize-none rounded-md border border-line-strong bg-surface px-4 py-3.5 text-sm text-ink placeholder-muted/60 transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+                        value={formData.message}
+                        onChange={handleChange}
+                        disabled={isSubmitting}
+                        className="w-full resize-none rounded-md border border-line-strong bg-surface px-4 py-3.5 text-sm text-ink placeholder-muted/60 transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent disabled:opacity-50"
                       />
                     </div>
 
                     <button
                       type="submit"
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-accent py-4 text-base font-semibold text-white shadow-xl shadow-accent/25 transition-all duration-200 ease-out hover:bg-accent-hover active:scale-[0.97]"
+                      disabled={isSubmitting}
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-accent py-4 text-base font-semibold text-white shadow-xl shadow-accent/25 transition-all duration-200 ease-out hover:bg-accent-hover active:scale-[0.97] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:bg-accent disabled:active:scale-100"
                     >
-                      <Send className="h-4 w-4" />
-                      <span>Send Message</span>
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                          <span>Sending...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Send className="h-4 w-4" />
+                          <span>Send Message</span>
+                        </>
+                      )}
                     </button>
                   </form>
                 )}
