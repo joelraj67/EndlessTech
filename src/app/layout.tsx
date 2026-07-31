@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
-import { Inter, Manrope, JetBrains_Mono } from 'next/font/google';
+import { Inter, Manrope, JetBrains_Mono, Newsreader } from 'next/font/google';
 import './globals.css';
 
 /**
- * Premium enterprise type system:
- * - Manrope — display font for headings / hero.
- * - Inter — body / UI / subheads.
- * - JetBrains Mono — technical labels, terminal.
+ * Premium enterprise type system (1.docx Option 1 — Recommended):
+ * - Manrope — sans display for headings / hero (communicates premium brand).
+ * - Inter — sans body / UI / subheads.
+ * - JetBrains Mono — technical labels, eyebrows, terminal.
+ * - Newsreader italic — editorial serif accent (display word emphasis).
  */
 const inter = Inter({ subsets: ['latin'], variable: '--font-body', display: 'swap' });
 const manrope = Manrope({
@@ -20,6 +21,13 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
   display: 'swap',
+});
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  variable: '--font-serif',
+  display: 'swap',
+  style: ['italic'],
+  weight: ['400', '500', '600'],
 });
 
 export const metadata: Metadata = {
@@ -60,8 +68,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en-GB"
-      className={`${inter.variable} ${manrope.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${manrope.variable} ${jetbrainsMono.variable} ${newsreader.variable}`}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: 'document.documentElement.classList.add("js");',
+          }}
+        />
+      </head>
       <body className="font-body antialiased bg-paper text-ink">
         {/* Skip-to-content for keyboard/screen reader users */}
         <a

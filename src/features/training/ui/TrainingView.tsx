@@ -24,7 +24,7 @@ export default function TrainingView() {
         title={
           <>
             Professional IT Training & <br />
-            <GradientText tone="purple">Industry Certifications</GradientText>
+            <GradientText>Industry Certifications</GradientText>
           </>
         }
         subtitle="Curricula designed with cloud partners. 95% first-attempt certification pass rate for AWS and Azure learners across the UK."

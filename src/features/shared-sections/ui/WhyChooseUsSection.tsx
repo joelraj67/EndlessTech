@@ -5,6 +5,7 @@ import { Section } from '@/shared/ui/section';
 import { GlassCard } from '@/shared/ui/glass-card';
 import { Badge } from '@/shared/ui/badge';
 import { GradientText } from '@/shared/ui/gradient-text';
+import { accentClasses, type AccentKey } from '@/shared/lib/accent';
 import { advantages } from '@/features/shared-sections/model/advantages';
 
 /**
@@ -34,17 +35,19 @@ export default function WhyChooseUsSection() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {advantages.map((item) => {
             const Icon = item.icon;
+            const accent = accentClasses(item.accentClass as AccentKey);
             return (
               <GlassCard
                 key={item.title}
                 interactive
-                className="group relative overflow-hidden p-9 border-white/15 hover:border-sky-400/50"
+                accent={item.accentClass as AccentKey}
+                className="group relative overflow-hidden p-9 border-white/15"
               >
                 <div className="mb-6 flex items-center justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-sky-400/30 bg-sky-500/15 text-sky-300 transition-transform group-hover:scale-110">
+                  <div className={`flex h-12 w-12 items-center justify-center rounded-lg ${accent.chip} transition-transform group-hover:scale-110`}>
                     <Icon className="h-6 w-6" />
                   </div>
-                  <span className="rounded-full border border-sky-400/30 bg-sky-500/15 px-3 py-1 font-mono text-xs font-bold text-sky-300 shadow-[0_0_12px_rgba(56,189,248,0.25)]">
+                  <span className={`rounded-full ${accent.chip} px-3 py-1 font-mono text-xs font-bold ${accent.glow.replace('shadow-[', '').replace(']', '')}`}>
                     {item.metric}
                   </span>
                 </div>

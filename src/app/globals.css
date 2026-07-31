@@ -50,15 +50,15 @@
     --color-panel-rgb: 10 17 36;
 
     /* --- Extended Tokens ------------------------------------ */
-    --color-thistle: #f472b6;
-    --color-thistle-rgb: 244 114 182;
-    --color-lavender-grey: #cbd5e1;
-    --color-lavender-grey-rgb: 203 213 225;
-    --color-cerulean: #38bdf8;
-    --color-cerulean-rgb: 56 189 248;
-    --color-charcoal-blue: #1e293b;
-    --color-charcoal-blue-rgb: 30 41 59;
-    --color-jet-black: #0b132b;
+    --color-thistle: #E4B7D9;
+    --color-thistle-rgb: 228 183 217;
+    --color-lavender-grey: #A8ADC2;
+    --color-lavender-grey-rgb: 168 173 194;
+    --color-cerulean: #5BC4D6;
+    --color-cerulean-rgb: 91 196 214;
+    --color-charcoal-blue: #243449;
+    --color-charcoal-blue-rgb: 36 52 73;
+    --color-jet-black: #0B132B;
     --color-jet-black-rgb: 11 19 43;
 
     /* --- Motion --------------------------------------------- */
@@ -127,8 +127,8 @@
 
   .glass-card-hover:hover {
     background: rgba(24, 38, 70, 0.9);
-    border-color: rgba(56, 189, 248, 0.6);
-    box-shadow: 0 16px 48px rgba(56, 189, 248, 0.3), 0 0 24px rgba(56, 189, 248, 0.2);
+    border-color: var(--card-accent-border, rgba(56, 189, 248, 0.6));
+    box-shadow: var(--card-accent-glow, 0 16px 48px rgba(56, 189, 248, 0.3), 0 0 24px rgba(56, 189, 248, 0.2));
     transform: translateY(-4px);
   }
 
@@ -229,10 +229,14 @@
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(24px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
   will-change: opacity, transform;
+}
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
 }
 .reveal-visible {
   opacity: 1;

@@ -4,6 +4,7 @@ import { Compass, ArrowRight } from 'lucide-react';
 import { Container } from '@/shared/ui/container';
 import { Section } from '@/shared/ui/section';
 import { GlassCard } from '@/shared/ui/glass-card';
+import { accentClasses, type AccentKey } from '@/shared/lib/accent';
 import { advisorySteps } from '@/features/consulting/model/advisory-steps';
 
 /**
@@ -50,17 +51,20 @@ export default function ConsultingSection() {
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {advisorySteps.map((item) => (
-            <GlassCard key={item.title} interactive className="group p-10">
-              <div className={`mb-6 flex h-12 w-12 items-center justify-center rounded-lg border border-${item.accentClass}/30 bg-${item.accentClass}/10 text-${item.accentClass} transition-transform group-hover:scale-110`}>
-                <item.icon className="h-6 w-6" />
-              </div>
-              {/* Sequential step marker — justified by genuine sequence */}
-              <span className="mb-2 block font-mono text-xs text-line-strong">{item.step}</span>
-              <h3 className="mb-3 font-body text-xl font-semibold text-ink">{item.title}</h3>
-              <p className="font-body text-sm leading-relaxed text-muted">{item.description}</p>
-            </GlassCard>
-          ))}
+          {advisorySteps.map((item) => {
+            const accent = accentClasses(item.accentClass as AccentKey);
+            return (
+              <GlassCard key={item.title} interactive accent={item.accentClass as AccentKey} className="group p-10">
+                <div className={`mb-6 flex h-12 w-12 items-center justify-center rounded-lg ${accent.chip} transition-transform group-hover:scale-110`}>
+                  <item.icon className="h-6 w-6" />
+                </div>
+                {/* Sequential step marker — justified by genuine sequence */}
+                <span className="mb-2 block font-mono text-xs text-line-strong">{item.step}</span>
+                <h3 className="mb-3 font-body text-xl font-semibold text-ink">{item.title}</h3>
+                <p className="font-body text-sm leading-relaxed text-muted">{item.description}</p>
+              </GlassCard>
+            );
+          })}
         </div>
       </Container>
     </Section>

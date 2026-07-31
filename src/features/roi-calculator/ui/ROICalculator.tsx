@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Calculator, TrendingUp, Award, ArrowRight } from 'lucide-react';
 import { Container } from '@/shared/ui/container';
 import { GlassCard } from '@/shared/ui/glass-card';
+import { accentClasses, type AccentKey } from '@/shared/lib/accent';
 import { pathways } from '@/features/roi-calculator/model/roi-pathways';
 import { withBasePath } from '@/shared/lib/paths';
 
@@ -22,14 +23,7 @@ export default function ROICalculator() {
   const [selectedId, setSelectedId] = useState(pathways[0].id);
   const selected = pathways.find((p) => p.id === selectedId) ?? pathways[0];
 
-  const getAccentClasses = (accentClass: string) => ({
-    border: `border-${accentClass}`,
-    bg: `bg-${accentClass}`,
-    bgSoft: `bg-${accentClass}/10`,
-    text: `text-${accentClass}`,
-    textActive: `text-${accentClass}`,
-    shadow: `shadow-[0_0_10px_var(--color-${accentClass.replace('-', '-')})]`,
-  });
+  const getAccentClasses = (accentClass: AccentKey) => accentClasses(accentClass);
 
   return (
     <GlassCard className="relative overflow-hidden p-8 rounded-xl border border-line shadow-lg sm:p-10">
@@ -46,7 +40,7 @@ export default function ROICalculator() {
           </h3>
 
           {pathways.map((item) => {
-            const accent = getAccentClasses(item.accentClass);
+            const accent = getAccentClasses(item.accentClass as AccentKey);
             return (
               <button
                 key={item.id}
@@ -61,7 +55,7 @@ export default function ROICalculator() {
                 <p className="font-body text-sm font-semibold">{item.name}</p>
                 <p className="font-mono text-xs text-muted">{item.type} • {item.duration}</p>
               </div>
-              <span className={`w-3 h-3 rounded-full ${selectedId === item.id ? `${accent.bg} ${accent.shadow}` : 'bg-line-strong'}`} />
+              <span className={`w-3 h-3 rounded-full ${selectedId === item.id ? `${accent.bg} ${accent.glow}` : 'bg-line-strong'}`} />
             </button>
             );
           })}
@@ -75,7 +69,7 @@ export default function ROICalculator() {
                 <span className="font-mono text-xs text-muted uppercase">Selected Target</span>
                 <h4 className="font-body text-xl font-semibold text-ink">{selected.name}</h4>
               </div>
-              <span className={`px-3 py-1 rounded-sm ${getAccentClasses(selected.accentClass).bgSoft} ${getAccentClasses(selected.accentClass).textActive} text-xs font-mono border ${getAccentClasses(selected.accentClass).border}/30`}>
+              <span className={`px-3 py-1 rounded-sm ${getAccentClasses(selected.accentClass as AccentKey).bgSoft} ${getAccentClasses(selected.accentClass as AccentKey).text} text-xs font-mono border ${getAccentClasses(selected.accentClass as AccentKey).borderSoft}`}>
                 {selected.type}
               </span>
             </div>

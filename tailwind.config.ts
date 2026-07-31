@@ -53,6 +53,7 @@ const config: Config = {
         display: ['var(--font-display)', 'system-ui', '-apple-system', 'sans-serif'],
         body: ['var(--font-body)', 'system-ui', '-apple-system', 'sans-serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        serif: ['var(--font-serif)', 'Georgia', 'Cambria', '"Times New Roman"', 'serif'],
         // Alias sans → body so legacy `font-sans` refs keep working.
         sans: ['var(--font-body)', 'system-ui', '-apple-system', 'sans-serif'],
       },
